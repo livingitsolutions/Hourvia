@@ -1,0 +1,3328 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "2c6ea148-e3fa-4b61-88d2-0f651b7af211",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "values": [
+        "APPROVE",
+        "REJECT",
+        "REOPEN"
+      ],
+      "name": "approval_decision",
+      "entityType": "enums",
+      "schema": "public"
+    },
+    {
+      "values": [
+        "OWNER",
+        "ADMIN",
+        "MEMBER",
+        "VIEWER"
+      ],
+      "name": "membership_role",
+      "entityType": "enums",
+      "schema": "public"
+    },
+    {
+      "values": [
+        "ACTIVE",
+        "SUSPENDED",
+        "REMOVED"
+      ],
+      "name": "membership_status",
+      "entityType": "enums",
+      "schema": "public"
+    },
+    {
+      "values": [
+        "DRAFT",
+        "SUBMITTED",
+        "APPROVED",
+        "REJECTED"
+      ],
+      "name": "timesheet_status",
+      "entityType": "enums",
+      "schema": "public"
+    },
+    {
+      "values": [
+        "PERSONAL",
+        "BUSINESS"
+      ],
+      "name": "workspace_type",
+      "entityType": "enums",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "active_timers",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "adjustments",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "approvals",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "audit_events",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "clients",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "external_identities",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "memberships",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "projects",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "time_entries",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "timesheet_entries",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "timesheet_submission_entries",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "timesheet_submissions",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "timesheets",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "users",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "workspaces",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "project_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "started_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "''",
+      "generated": null,
+      "identity": null,
+      "name": "description",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "idempotency_key",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "time_entry_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "revision",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "requested_by",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "reason",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "replacement_started_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "replacement_ended_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "replacement_duration_seconds",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "replacement_project_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "replacement_description",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "replacement_billable",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "false",
+      "generated": null,
+      "identity": null,
+      "name": "voided",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timesheet_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "adjustment_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "target_version",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "decided_by",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "approval_decision",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "decision",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "reason",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "actor_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "action",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "entity_type",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "entity_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "request_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "occurred_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "jsonb",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "metadata",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "clients"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "clients"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "clients"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "archived_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "clients"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "clients"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "external_identities"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "external_identities"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "issuer",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "external_identities"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "subject",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "external_identities"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "external_identities"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "type": "membership_role",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "role",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "type": "membership_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "client_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "false",
+      "generated": null,
+      "identity": null,
+      "name": "billable",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "archived_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "project_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "started_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "ended_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "duration_seconds",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timezone",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "''",
+      "generated": null,
+      "identity": null,
+      "name": "description",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "false",
+      "generated": null,
+      "identity": null,
+      "name": "billable",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "idempotency_key",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timesheet_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "time_entry_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "effective_revision",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "duration_seconds",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timesheet_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "submission_version",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "time_entry_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "effective_revision",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "started_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "ended_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "duration_seconds",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "project_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "description",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "billable",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timesheet_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "version",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "period_start",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "period_end",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timezone",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "submitted_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "workspace_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "period_start",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "period_end",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timezone",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "timesheet_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'DRAFT'",
+      "generated": null,
+      "identity": null,
+      "name": "status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "1",
+      "generated": null,
+      "identity": null,
+      "name": "version",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "display_name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timezone",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "type": "workspace_type",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "type",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "owner_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "timezone",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "type": "timestamp(3) with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "archived_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "adjustment_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": true,
+      "where": "\"adjustment_id\" IS NOT NULL",
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "adjustment_one_decision",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "timesheet_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "target_version",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": true,
+      "where": "\"timesheet_id\" IS NOT NULL AND \"decision\" <> 'REOPEN'",
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "timesheet_one_terminal_decision_per_version",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "timesheet_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "created_at",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "approval_workspace_timesheet_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "occurred_at",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "audit_workspace_occurred_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "entity_type",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "entity_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "occurred_at",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "audit_workspace_entity_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "name",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "client_workspace_name_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "clients"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "external_identity_user_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "external_identities"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": true,
+      "where": "\"role\" = 'OWNER'",
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "one_owner_membership_per_workspace",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "status",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "membership_user_status_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "client_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "project_workspace_client_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "user_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "started_at",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "entry_workspace_user_start_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "project_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "started_at",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "entry_workspace_project_start_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "workspace_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "status",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "period_start",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "timesheet_workspace_status_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "owner_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": true,
+      "where": "\"type\" = 'PERSONAL'",
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "one_personal_workspace_per_user",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "owner_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "workspace_owner_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "active_timers_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "active_timers_user_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "memberships",
+      "columnsTo": [
+        "workspace_id",
+        "user_id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timer_member_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "project_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "projects",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timer_project_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "adjustments_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "requested_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "adjustments_requested_by_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "time_entry_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "time_entries",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "adjustment_entry_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "requested_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "memberships",
+      "columnsTo": [
+        "workspace_id",
+        "user_id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "adjustment_actor_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "replacement_project_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "projects",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "adjustment_project_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "approvals_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "decided_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "approvals_decided_by_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "timesheet_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "timesheets",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "approval_timesheet_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "timesheet_id",
+        "target_version"
+      ],
+      "schemaTo": "public",
+      "tableTo": "timesheet_submissions",
+      "columnsTo": [
+        "workspace_id",
+        "timesheet_id",
+        "version"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "approval_submitted_version_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "adjustment_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "adjustments",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "approval_adjustment_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "decided_by"
+      ],
+      "schemaTo": "public",
+      "tableTo": "memberships",
+      "columnsTo": [
+        "workspace_id",
+        "user_id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "approval_actor_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "audit_events_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "actor_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "audit_events_actor_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "audit_events"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "clients_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "clients"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "external_identities_user_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "external_identities"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "memberships_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "memberships_user_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "projects_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "client_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "clients",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "project_client_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "time_entries_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "time_entries_user_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "memberships",
+      "columnsTo": [
+        "workspace_id",
+        "user_id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "entry_member_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "project_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "projects",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "entry_project_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheet_entries_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "timesheet_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "timesheets",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheet_item_sheet_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "time_entry_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "time_entries",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheet_item_entry_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheet_submission_entries_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "timesheet_id",
+        "submission_version"
+      ],
+      "schemaTo": "public",
+      "tableTo": "timesheet_submissions",
+      "columnsTo": [
+        "workspace_id",
+        "timesheet_id",
+        "version"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "submission_item_version_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "time_entry_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "time_entries",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "submission_item_entry_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "project_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "projects",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "submission_item_project_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheet_submissions_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheet_submissions_user_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "timesheet_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "timesheets",
+      "columnsTo": [
+        "workspace_id",
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "submission_sheet_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "memberships",
+      "columnsTo": [
+        "workspace_id",
+        "user_id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "submission_member_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "workspace_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "workspaces",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheets_workspace_id_workspaces_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheets_user_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "memberships",
+      "columnsTo": [
+        "workspace_id",
+        "user_id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "timesheet_member_same_workspace",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "owner_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "workspaces_owner_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "columns": [
+        "workspace_id",
+        "user_id"
+      ],
+      "nameExplicit": true,
+      "name": "one_active_timer_per_workspace_user",
+      "entityType": "pks",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "columns": [
+        "workspace_id",
+        "timesheet_id",
+        "time_entry_id"
+      ],
+      "nameExplicit": false,
+      "name": "timesheet_entries_pkey",
+      "entityType": "pks",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "columns": [
+        "workspace_id",
+        "timesheet_id",
+        "submission_version",
+        "time_entry_id"
+      ],
+      "nameExplicit": false,
+      "name": "timesheet_submission_entries_pkey",
+      "entityType": "pks",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "columns": [
+        "workspace_id",
+        "timesheet_id",
+        "version"
+      ],
+      "nameExplicit": false,
+      "name": "timesheet_submissions_pkey",
+      "entityType": "pks",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "adjustments_pkey",
+      "schema": "public",
+      "table": "adjustments",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "approvals_pkey",
+      "schema": "public",
+      "table": "approvals",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "audit_events_pkey",
+      "schema": "public",
+      "table": "audit_events",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "clients_pkey",
+      "schema": "public",
+      "table": "clients",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "external_identities_pkey",
+      "schema": "public",
+      "table": "external_identities",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "memberships_pkey",
+      "schema": "public",
+      "table": "memberships",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "projects_pkey",
+      "schema": "public",
+      "table": "projects",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "time_entries_pkey",
+      "schema": "public",
+      "table": "time_entries",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "timesheets_pkey",
+      "schema": "public",
+      "table": "timesheets",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "users_pkey",
+      "schema": "public",
+      "table": "users",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "workspaces_pkey",
+      "schema": "public",
+      "table": "workspaces",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "user_id",
+        "idempotency_key"
+      ],
+      "nullsNotDistinct": false,
+      "name": "timer_idempotency_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "active_timers"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "adjustment_workspace_id_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "time_entry_id",
+        "revision"
+      ],
+      "nullsNotDistinct": false,
+      "name": "adjustment_entry_revision_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "client_workspace_id_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "clients"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "issuer",
+        "subject"
+      ],
+      "nullsNotDistinct": false,
+      "name": "external_identity_issuer_subject_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "external_identities"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "user_id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "membership_workspace_user_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "membership_workspace_id_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "project_workspace_id_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "projects"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "entry_workspace_id_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "user_id",
+        "idempotency_key"
+      ],
+      "nullsNotDistinct": false,
+      "name": "entry_idempotency_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "time_entry_id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "entry_one_timesheet_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "timesheet_workspace_id_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        "workspace_id",
+        "user_id",
+        "period_start",
+        "period_end"
+      ],
+      "nullsNotDistinct": false,
+      "name": "timesheet_user_period_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "value": "\"revision\" > 0",
+      "name": "adjustment_revision_positive",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "value": "char_length(btrim(\"reason\")) > 0",
+      "name": "adjustment_reason_required",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "value": "\"replacement_ended_at\" >= \"replacement_started_at\" AND \"replacement_duration_seconds\" = floor(extract(epoch FROM (\"replacement_ended_at\" - \"replacement_started_at\"))) AND \"replacement_duration_seconds\" >= 0",
+      "name": "adjustment_duration_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "adjustments"
+    },
+    {
+      "value": "num_nonnulls(\"timesheet_id\", \"adjustment_id\") = 1 AND \"target_version\" > 0",
+      "name": "approval_one_target",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "value": "\"adjustment_id\" IS NULL OR \"decision\" <> 'REOPEN'",
+      "name": "approval_adjustment_not_reopened",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "approvals"
+    },
+    {
+      "value": "\"role\" <> 'OWNER' OR \"status\" = 'ACTIVE'",
+      "name": "membership_owner_active",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "value": "\"updated_at\" >= \"created_at\"",
+      "name": "membership_timestamps_ordered",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "memberships"
+    },
+    {
+      "value": "\"ended_at\" >= \"started_at\" AND \"duration_seconds\" = floor(extract(epoch FROM (\"ended_at\" - \"started_at\"))) AND \"duration_seconds\" >= 0",
+      "name": "entry_duration_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "time_entries"
+    },
+    {
+      "value": "\"effective_revision\" >= 0 AND \"duration_seconds\" >= 0",
+      "name": "timesheet_item_nonnegative",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "timesheet_entries"
+    },
+    {
+      "value": "\"effective_revision\" >= 0 AND \"ended_at\" >= \"started_at\" AND \"duration_seconds\" = floor(extract(epoch FROM (\"ended_at\" - \"started_at\"))) AND \"duration_seconds\" >= 0",
+      "name": "submission_item_duration_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "timesheet_submission_entries"
+    },
+    {
+      "value": "\"version\" > 0 AND \"period_end\" > \"period_start\"",
+      "name": "submission_period_version_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "timesheet_submissions"
+    },
+    {
+      "value": "\"period_end\" > \"period_start\" AND \"version\" > 0 AND \"updated_at\" >= \"created_at\"",
+      "name": "timesheet_period_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "timesheets"
+    },
+    {
+      "value": "char_length(btrim(\"name\")) BETWEEN 1 AND 120",
+      "name": "workspace_name_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "workspaces"
+    },
+    {
+      "value": "\"updated_at\" >= \"created_at\" AND (\"archived_at\" IS NULL OR \"archived_at\" >= \"created_at\")",
+      "name": "workspace_timestamps_ordered",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "workspaces"
+    }
+  ],
+  "renames": []
+}

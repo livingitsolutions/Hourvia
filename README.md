@@ -4,28 +4,52 @@
 
 Time tracked. Progress made.
 
-Hourvia's Sprint 0 foundation is a responsive, accessible brand and application shell. It intentionally contains no time-tracking, project-management, reporting, authentication, or persistence features.
+Hourvia is a multi-tenant time-tracking SaaS foundation for individuals, freelancers, and businesses. Sprint 0 establishes architecture, tested domain contracts, an offline schema proposal, and a responsive React application shell. It does not enable authentication, live timers, or database-backed product features.
 
 ## Run locally
 
-Serve the `public` directory with a static HTTP server. In the Netlify environment, use `netlify dev --port 8889`. No dependency installation or compilation is required. Netlify publishes `public` directly using `netlify.toml`.
+Use Node 22.12 or later (Node 24 is the inspected Netlify runtime) and npm:
+
+```sh
+npm ci
+npm run dev
+```
+
+For an approved local Netlify-emulated session, use `netlify dev --port 8889`. Do not connect to the database until provisioning and migrations are explicitly authorized. Pure frontend development through Vite does not require a database. Netlify is configured to publish `dist` after its build workflow; no deployment occurred in this sprint.
+
+## Validation
+
+```sh
+npm run typecheck
+npm test
+npm run lint
+```
+
+`npm run build` runs typecheck and the Vite production bundle in the hosting workflow. It was not executed during this task because build execution is reserved for automatic validation. `npm run test:watch` supports local iteration. Tests use no database connection and cover domain invariants, authorization ports, input validation, handler behavior, schema metadata, navigation, and import boundaries.
+
+## Stack
+
+React, Vite, TypeScript, Tailwind CSS v4, Netlify Functions, Netlify Database/PostgreSQL, Drizzle ORM, Zod, ESLint, and Vitest. Versions are pinned by `package-lock.json`. The native Netlify adapter uses the Drizzle beta release line; its registry deprecation notice and upgrade risk are documented in ADR 0005.
 
 ## Structure
 
-- `public/brand.js`: reusable brand identity, independent of business logic.
-- `public/styles.css`: semantic light/dark tokens, typography, spacing, buttons, cards, navigation, and form styles.
-- `public/index.html`: responsive shell, overview, design-system specimens, metadata, and brand mark.
-- `public/app.js`: presentation-only navigation, theme selection, mobile menu, and accessible about dialog.
-- `docs/sprint-0-final-report.md`: scope, branding decisions, validation, and outstanding decisions.
+- `src/domain`: framework-independent shared contracts, Workspace/Membership models, and nine context charters.
+- `src/application`: provider-neutral identity and server-side workspace authorization ports/policy.
+- `src/infrastructure`: disabled auth, runtime value adapters, Zod boundary, dormant database factory.
+- `src/presentation`: React shell, reusable brand/icon components, local-session themes, seven navigable screens.
+- `db/schema.ts`: offline proposed relational schema; no generated or applied migrations.
+- `netlify/functions/health.mts`: static `/api/health`; no database or authenticated business operations.
+- `docs/architecture.md`, `docs/database-design.md`, `docs/adr`: boundaries, security, invariants, policies, and decisions.
+- `docs/sprint-0-final-report.md`: architectural review and actual validation results.
 
-The overview and design system use hash navigation with working back/forward navigation and direct links. Product navigation is explicitly disabled and labeled “Soon.” The interface contains no fabricated work metrics or records. The form specimen is read-only.
+Dashboard, Timer, Timesheets, Adjustments, Projects, Reports, and Settings use hash navigation with direct links and back/forward support. All business screens are placeholders. Workspace/account labels disclose preview status; metrics are unconnected, not fabricated records. The timer does not start or persist. Settings changes appearance only.
 
 ## Design principles
 
-Deep navy `#0C2530`, emerald `#087F5B`, soft mint `#7BD9B0`, and white form the core palette. Semantic neutral colors adapt to light and dark themes. Manrope is the preferred font, with local fallbacks if Google Fonts is unavailable. Spacing follows a 4px rhythm. Focus indicators, reduced-motion support, labeled controls, and responsive layouts are shared across the shell.
+Deep navy `#0C2530`, emerald `#087F5B`, soft mint `#7BD9B0`, and white retain the established brand. Semantic neutral colors adapt to light/dark themes. Local Avenir Next/Segoe UI fallbacks replace the previous externally hosted font request. Tailwind v4 is configured through its Vite plugin, with reusable semantic CSS tokens and component styles. Focus indicators, skip navigation, native dialogs, reduced-motion support, labeled controls, and responsive layouts are shared across the shell.
 
-The default theme follows the device setting. The header toggles light/dark; the design-system page also offers system mode. Manual theme choices last only for the current page session. No user preference is stored or sent to a server.
+The default theme follows the device setting. The header toggles light/dark; Settings also offers system mode. Manual choices last only for the page session. No user preference or business state is saved locally or sent to a server.
 
 ## Deployment identity
 
-Project identifier: `hourvia`. Proposed production address: `hourvia.livingitsolutions.com`. The custom domain is a proposal, not a configured or verified deployment. Canonical URL metadata must be added only once the production domain is confirmed. This sprint does not change DNS, provision infrastructure, or select an application framework or backend architecture.
+Project identifier: `hourvia`. Proposed production address: `hourvia.livingitsolutions.com`. The custom domain remains a proposal, not a verified deployment. No canonical URL, DNS/TLS configuration, production resource activation, migration execution, commit, push, or deployment is part of Sprint 0.
