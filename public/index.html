@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f6f8f7">
+    <meta name="description" content="Hourvia by Living IT Solutions. Time tracked. Progress made. A considered workspace for focused work.">
+    <meta property="og:title" content="Hourvia by Living IT Solutions">
+    <meta property="og:description" content="Time tracked. Progress made.">
+    <meta property="og:type" content="website">
+    <title>Hourvia — Time tracked. Progress made.</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <symbol id="i-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 3v17h17M9 15v-4m5 4V7m5 8V4"/></symbol>
+        <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1-3.7 1.7 1.7 0 0 1 1-3.1h3a3 3 0 0 0 3-3.2A9 9 0 0 0 12 3Z"/><path d="M7 10h.01M10 7h.01M15 7h.01M18 10h.01" stroke-width="3"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15a9 9 0 0 1-11-11A9 9 0 1 0 20 15Z"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+        <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+        <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M12 16v5m-4 0h8"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="Application sidebar">
+        <a class="brand" href="#overview" aria-label="Hourvia home">
+          <img src="/favicon.svg" width="39" height="39" alt="">
+          <span><span class="brand-name" data-brand="name">Hourvia</span><span class="brand-endorsement" data-brand="endorsement">by Living IT Solutions</span></span>
+        </a>
+        <div class="workspace-label"><span class="workspace-icon">H</span><span>Hourvia workspace<small>Your space to make progress</small></span><span class="workspace-dot" role="img" aria-label="Foundation ready"></span></div>
+        <nav aria-label="Main navigation">
+          <p class="nav-label">WORKSPACE</p>
+          <a class="nav-item active" href="#overview" data-page="overview" aria-current="page"><svg class="icon"><use href="#i-overview"/></svg>Overview</a>
+          <button class="nav-item" disabled><svg class="icon"><use href="#i-clock"/></svg>Time tracking<span class="soon">Soon</span></button>
+          <button class="nav-item" disabled><svg class="icon"><use href="#i-folder"/></svg>Projects<span class="soon">Soon</span></button>
+          <button class="nav-item" disabled><svg class="icon"><use href="#i-chart"/></svg>Reports<span class="soon">Soon</span></button>
+          <p class="nav-label foundation-label">FOUNDATION</p>
+          <a class="nav-item" href="#design-system" data-page="design-system"><svg class="icon"><use href="#i-palette"/></svg>Design system</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-note"><span class="small-spark"><svg class="icon"><use href="#i-spark"/></svg></span><p>A little focus.<br>A lot of possibility.</p><span>Good things are taking shape.</span></div>
+          <button class="about-button" data-open-about><span class="company-avatar">LI</span><span>Living IT Solutions<small>Thoughtfully built. For you.</small></span><svg class="icon"><use href="#i-chevron"/></svg></button>
+        </div>
+      </aside>
+      <button class="sidebar-backdrop" aria-label="Close navigation" hidden></button>
+
+      <div class="app-body">
+        <header class="topbar">
+          <div class="breadcrumb"><button class="icon-button mobile-menu" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar"><svg class="icon"><use href="#i-menu"/></svg></button><span>Workspace</span><svg class="icon"><use href="#i-chevron"/></svg><strong id="breadcrumb-page">Overview</strong></div>
+          <div class="topbar-actions"><span class="foundation-badge"><span></span>Foundation preview</span><span class="topbar-divider"></span><button class="icon-button" id="theme-toggle" aria-label="Switch to dark theme"><svg class="icon"><use href="#i-moon"/></svg></button><button class="avatar" data-open-about aria-label="About the Hourvia workspace">H</button></div>
+        </header>
+
+        <main id="main" tabindex="-1">
+          <section id="overview" class="page" aria-labelledby="overview-title">
+            <div class="page-heading"><div><p class="eyebrow">A LITTLE CLARITY GOES A LONG WAY</p><h1 id="overview-title">Welcome to Hourvia<span class="heading-dot">.</span></h1><p>Your time matters. Make space for work that does, too.</p></div><span class="sprint-label">SPRINT <span>00</span></span></div>
+
+            <section class="hero" aria-labelledby="hero-title">
+              <div class="hero-copy"><span class="hero-kicker"><span></span>A MORE INTENTIONAL WORKDAY</span><h2 id="hero-title">Time tracked.<br><span>Progress made.</span></h2><p>A clear view of your time. A little more room to focus.<br class="desktop-break"> A better way to move your work forward.</p><a class="button button-mint" href="#design-system">Explore the foundation<svg class="icon"><use href="#i-arrow"/></svg></a><span class="hero-caption">Built with purpose. Growing with you.</span></div>
+              <div class="hero-art" aria-hidden="true">
+                <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+                <span class="art-plus plus-one">+</span><span class="art-plus plus-two">+</span><span class="art-dot dot-one"></span><span class="art-dot dot-two"></span>
+                <div class="clock-face"><div class="clock-ticks"></div><span class="clock-label twelve">12</span><span class="clock-label three">3</span><span class="clock-label six">6</span><span class="clock-label nine">9</span><span class="clock-hand hour-hand"></span><span class="clock-hand minute-hand"></span><span class="clock-center"></span><span class="clock-brand">HOURVIA</span></div>
+                <div class="floating-note focus-note"><span class="note-icon"><svg class="icon"><use href="#i-check"/></svg></span><span>A little more focus<small>A little more progress.</small></span></div>
+                <div class="floating-note time-note"><svg class="icon"><use href="#i-clock"/></svg><span>Make time count.</span></div>
+              </div>
+            </section>
+
+            <div class="section-heading"><h2>A place for your best work</h2><span>Less noise. More perspective.</span></div>
+            <div class="capability-grid">
+              <article class="card capability"><span class="feature-icon"><svg class="icon"><use href="#i-clock"/></svg></span><span class="status-tag">COMING NEXT</span><h3>Know where your time goes</h3><p>A simple way to capture your workday,<br class="desktop-break"> without getting in the way of it.</p><div class="card-bottom">Time tracking<svg class="icon"><use href="#i-arrow"/></svg></div></article>
+              <article class="card capability"><span class="feature-icon"><svg class="icon"><use href="#i-folder"/></svg></span><span class="status-tag">COMING NEXT</span><h3>Give your work a home</h3><p>Bring your projects into focus and keep<br class="desktop-break"> the bigger picture in view.</p><div class="card-bottom">Project organization<svg class="icon"><use href="#i-arrow"/></svg></div></article>
+              <article class="card capability"><span class="feature-icon"><svg class="icon"><use href="#i-chart"/></svg></span><span class="status-tag">COMING NEXT</span><h3>See the progress you make</h3><p>Turn everyday effort into a clearer<br class="desktop-break"> understanding of your progress.</p><div class="card-bottom">Thoughtful insights<svg class="icon"><use href="#i-arrow"/></svg></div></article>
+            </div>
+
+            <div class="lower-grid">
+              <section class="card workspace-card"><div class="card-header"><h2>Your workspace</h2><span class="subtle-pill">A fresh start</span></div><div class="empty-workspace"><div class="empty-illustration" aria-hidden="true"><div class="mini-sheet"><span></span><span></span><span></span></div><span class="empty-check"><svg class="icon"><use href="#i-spark"/></svg></span></div><div><h3>Great work starts with a little space.</h3><p>Your workspace is ready to grow with you.<br>Time tracking and projects arrive in future sprints.</p></div></div><div class="workspace-footer"><span class="ready-dot"></span>Fresh foundation. No clutter. Just possibility.</div></section>
+              <section class="foundation-card"><span class="foundation-card-icon"><svg class="icon"><use href="#i-palette"/></svg></span><span class="eyebrow">THOUGHTFULLY CONNECTED</span><h2>One brand.<br> A consistent experience.</h2><p>Meet the colors, details, and principles<br class="desktop-break"> that make Hourvia feel like Hourvia.</p><a class="text-link" href="#design-system">Inside our design system<svg class="icon"><use href="#i-arrow"/></svg></a><div class="palette-peek" aria-hidden="true"><span></span><span></span><span></span><span></span></div></section>
+            </div>
+          </section>
+
+          <section id="design-system" class="page" aria-labelledby="design-title" hidden>
+            <div class="page-heading"><div><p class="eyebrow">THE DETAILS MAKE THE DIFFERENCE</p><h1 id="design-title">The Hourvia foundation<span class="heading-dot">.</span></h1><p>A shared visual language. A consistent experience.</p></div><span class="sprint-label">SPRINT <span>00</span></span></div>
+            <section class="card identity-card"><p class="eyebrow">OUR IDENTITY</p><div class="brand specimen-brand"><img src="/favicon.svg" width="56" height="56" alt=""><span><span class="brand-name" data-brand="name">Hourvia</span><span class="brand-endorsement" data-brand="endorsement">by Living IT Solutions</span></span></div><h2 data-brand="tagline">Time tracked. Progress made.</h2><p>Deep navy brings clarity. Emerald brings momentum. Space lets the important things breathe.</p></section>
+            <div class="section-heading"><h2>Color, with purpose</h2><span>Shared tokens. Both themes.</span></div>
+            <div class="swatch-grid"><article class="card swatch"><div style="background:#0c2530"></div><h3>Deep navy</h3><p>Clarity &amp; confidence <code>#0C2530</code></p></article><article class="card swatch"><div style="background:#087f5b"></div><h3>Emerald</h3><p>Focus &amp; momentum <code>#087F5B</code></p></article><article class="card swatch"><div style="background:#7bd9b0"></div><h3>Soft mint</h3><p>A thoughtful accent <code>#7BD9B0</code></p></article><article class="card swatch"><div style="background:#ffffff"></div><h3>White</h3><p>Room to breathe <code>#FFFFFF</code></p></article></div>
+            <div class="system-grid"><section class="card specimen"><p class="eyebrow">TYPE &amp; SPACE</p><h2>Clarity comes first.</h2><p>Manrope headings and a humanist body stack keep the experience composed and readable. If the web font is unavailable, local fonts preserve the layout.</p><div class="type-sample">Make every moment matter.</div><p class="type-caption">A considered scale. A 4px spacing rhythm.</p><div class="spacing-sample" aria-label="Spacing scale: 4, 8, 12, 16, 24, 32, 48 pixels"><span>4</span><span>8</span><span>12</span><span>16</span><span>24</span><span>32</span><span>48</span></div></section><section class="card specimen"><p class="eyebrow">BUTTONS &amp; STATES</p><h2>Small details. Clear actions.</h2><p>Consistent focus, hover, and disabled states. Clear labels. Comfortable touch targets.</p><div class="button-samples"><button class="button button-primary" data-open-about>Meet Hourvia<svg class="icon"><use href="#i-arrow"/></svg></button><a class="button button-secondary" href="#overview">Back to overview</a><button class="button button-secondary" disabled>Coming next</button></div><p class="sample-note">These are presentation examples, not product actions.</p></section></div>
+            <div class="system-grid"><section class="card specimen"><p class="eyebrow">APPEARANCE</p><h2>Your preferred perspective.</h2><p>Light, dark, or your device setting. Theme preferences apply to this session; no account or stored user data is required.</p><div class="theme-options" role="group" aria-label="Color theme"><button class="button button-secondary" data-theme-choice="light" aria-pressed="true"><svg class="icon"><use href="#i-sun"/></svg>Light</button><button class="button button-secondary" data-theme-choice="dark" aria-pressed="false"><svg class="icon"><use href="#i-moon"/></svg>Dark</button><button class="button button-secondary" data-theme-choice="system" aria-pressed="false"><svg class="icon"><use href="#i-monitor"/></svg>System</button></div></section><section class="card specimen"><p class="eyebrow">FORM LANGUAGE</p><h2>Helpful from the first label.</h2><label class="field-label" for="sample-field">Workspace name <span>Style preview</span></label><input id="sample-field" class="input" value="Hourvia workspace" aria-describedby="field-help" readonly><p class="field-help" id="field-help">A read-only example. Workspace management is not included in Sprint 0.</p></section></div>
+          </section>
+          <footer class="page-footer"><span><span data-brand="name">Hourvia</span> <span class="footer-endorsement" data-brand="endorsement">by Living IT Solutions</span></span><span data-brand="tagline">Time tracked. Progress made.</span></footer>
+        </main>
+      </div>
+    </div>
+    <dialog id="about-dialog" aria-labelledby="about-title"><button class="icon-button dialog-close" aria-label="Close about Hourvia"><svg class="icon"><use href="#i-close"/></svg></button><img src="/favicon.svg" width="54" height="54" alt=""><p class="eyebrow">INTRODUCING</p><h2 id="about-title" data-brand="identity">Hourvia by Living IT Solutions</h2><p class="dialog-tagline" data-brand="tagline">Time tracked. Progress made.</p><p>This Sprint 0 preview establishes the Hourvia brand, responsive application shell, and shared design system. Time tracking, projects, reports, and accounts are intentionally reserved for future sprints.</p><span class="subtle-pill">Sprint 0 · Brand &amp; foundation</span><button class="button button-primary dialog-done">Back to the workspace<svg class="icon"><use href="#i-arrow"/></svg></button></dialog>
+  </body>
+</html>
