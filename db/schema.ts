@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { pgTable, pgEnum, uuid, text, timestamp, date, integer, boolean, jsonb, unique, uniqueIndex, index, check, foreignKey, primaryKey } from 'drizzle-orm/pg-core';
+import { pgTable, pgEnum, uuid, text, timestamp, date, integer, bigint, boolean, jsonb, unique, uniqueIndex, index, check, foreignKey, primaryKey } from 'drizzle-orm/pg-core';
 
 export const workspaceType = pgEnum('workspace_type', ['PERSONAL', 'BUSINESS']);
 export const membershipRole = pgEnum('membership_role', ['OWNER', 'ADMIN', 'MEMBER', 'VIEWER']);
@@ -250,6 +250,37 @@ export const auditEvents = pgTable('audit_events', {
   occurredAt: instant('occurred_at').notNull(),
   metadata: jsonb('metadata').$type<Readonly<Record<string, unknown>>>().notNull(),
 }, (table) => [
+  unique('audit_workspace_id_unique').on(table.workspaceId, table.id),
+  // Deferred actor FK is tracked by the Sprint 0.3A SQL candidate.
   index('audit_workspace_occurred_idx').on(table.workspaceId, table.occurredAt),
   index('audit_workspace_entity_idx').on(table.workspaceId, table.entityType, table.entityId, table.occurredAt),
 ]);
+
+// Sprint 0.3A candidate metadata only. These tables are unavailable until separately
+// reviewed promotion; SQL-only deferred constraints/triggers remain candidate-owned.
+export const foundationRequests = pgTable('foundation_requests', {
+  actorId: uuid('actor_id').notNull().references(() => users.id),
+  scopeId: uuid('scope_id').notNull(),
+  operation: text('operation').notNull(),
+  requestId: uuid('request_id').notNull(),
+  requestHash: text('request_hash').notNull(),
+  workspaceId: uuid('workspace_id').notNull().references(() => workspaces.id),
+  auditId: uuid('audit_id').notNull(),
+  committedAt: timestamp('committed_at', { withTimezone: true }).notNull().defaultNow(),
+}, (table) => [
+  primaryKey({ name: 'foundation_requests_pkey', columns: [table.actorId, table.scopeId, table.operation, table.requestId] }),
+  check('foundation_requests_operation_check', sql`${table.operation} IN ('PROVISION','RENAME','REVOKE')`),
+  check('foundation_requests_request_hash_check', sql`${table.requestHash} ~ '^[0-9a-f]{64}$'`),
+  // Deferred audit FK is tracked in the SQL candidate, never silently regenerated.
+]);
+
+export const foundationAuditObligations = pgTable('foundation_audit_obligations', {
+  id: bigint('id', { mode: 'bigint' }).primaryKey().generatedAlwaysAsIdentity(),
+  workspaceId: uuid('workspace_id').notNull(),
+  auditId: uuid('audit_id').notNull(),
+  actorId: uuid('actor_id').notNull(),
+  requestId: uuid('request_id').notNull(),
+  action: text('action').notNull(),
+  entityType: text('entity_type').notNull(),
+  entityId: uuid('entity_id').notNull(),
+}, (table) => [index('foundation_obligation_audit_idx').on(table.workspaceId, table.auditId)]);
