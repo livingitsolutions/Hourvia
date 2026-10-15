@@ -13,3 +13,5 @@ Users and verified issuer/subject mappings are global. A workspace is a tenant. 
 ## Consequences
 
 The requested workspace ID only selects a scope. Queries must explicitly constrain tenant and check resource ownership. Personal provisioning and owner membership are atomic. Partial indexes alone cannot verify owner identity/existence; deferred triggers are required before persistence. RLS is future defense in depth, not an assumed guarantee.
+
+Sprint 0.2 specifies the proposed enforcement in [ADR 0006](0006-forward-only-foundation-hardening.md) and the [forward-only design](../forward-only-hardening-design.md). The applied-preview baseline must be preserved; none of that hardening has been executed or independently verified on a live database.

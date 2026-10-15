@@ -4,7 +4,7 @@
 
 Time tracked. Progress made.
 
-Hourvia is a multi-tenant time-tracking SaaS foundation for individuals, freelancers, and businesses. Sprint 0 establishes architecture, tested domain contracts, an offline schema proposal, and a responsive React application shell. It does not enable authentication, live timers, or database-backed product features.
+Hourvia is a multi-tenant time-tracking SaaS foundation for individuals, freelancers, and businesses. Sprint 0 establishes architecture, tested domain contracts, schema metadata, and a responsive React application shell. It does not enable authentication, live timers, or database-backed product features. A baseline migration now exists and is reported applied to the preview database branch; application persistence remains disconnected. See the [current-state addendum](docs/sprint-0-current-state-addendum.md) for evidence and limitations.
 
 ## Run locally
 
@@ -15,7 +15,7 @@ npm ci
 npm run dev
 ```
 
-For an approved local Netlify-emulated session, use `netlify dev --port 8889`. Do not connect to the database until provisioning and migrations are explicitly authorized. Pure frontend development through Vite does not require a database. Netlify is configured to publish `dist` after its build workflow; no deployment occurred in this sprint.
+For an approved local Netlify-emulated session, use `netlify dev --port 8889`. Do not connect to the database until that activity is explicitly authorized. Pure frontend development through Vite does not require a database. Netlify is configured to publish `dist` after its build workflow. A published deployment of the foundation has been observed; the build's own status/logs remain unavailable. The original implementation session and the reconciliation audit performed no deployment operations.
 
 ## Validation
 
@@ -37,10 +37,11 @@ React, Vite, TypeScript, Tailwind CSS v4, Netlify Functions, Netlify Database/Po
 - `src/application`: provider-neutral identity and server-side workspace authorization ports/policy.
 - `src/infrastructure`: disabled auth, runtime value adapters, Zod boundary, dormant database factory.
 - `src/presentation`: React shell, reusable brand/icon components, local-session themes, seven navigable screens.
-- `db/schema.ts`: offline proposed relational schema; no generated or applied migrations.
+- `db/schema.ts`: baseline relational schema metadata; generated migration files are immutable once applied.
 - `netlify/functions/health.mts`: static `/api/health`; no database or authenticated business operations.
 - `docs/architecture.md`, `docs/database-design.md`, `docs/adr`: boundaries, security, invariants, policies, and decisions.
 - `docs/sprint-0-final-report.md`: architectural review and actual validation results.
+- `docs/sprint-0-2-final-report.md`: reconciliation, security-design deliverables, validation, and outstanding review gates.
 
 Dashboard, Timer, Timesheets, Adjustments, Projects, Reports, and Settings use hash navigation with direct links and back/forward support. All business screens are placeholders. Workspace/account labels disclose preview status; metrics are unconnected, not fabricated records. The timer does not start or persist. Settings changes appearance only.
 
@@ -52,4 +53,4 @@ The default theme follows the device setting. The header toggles light/dark; Set
 
 ## Deployment identity
 
-Project identifier: `hourvia`. Proposed production address: `hourvia.livingitsolutions.com`. The custom domain remains a proposal, not a verified deployment. No canonical URL, DNS/TLS configuration, production resource activation, migration execution, commit, push, or deployment is part of Sprint 0.
+Project identifier: `hourvia`. Proposed custom production address: `hourvia.livingitsolutions.com`. That custom domain remains unverified; the existing Netlify-domain deployment is separately recorded in the current-state addendum. No domain configuration, resource activation, migration execution, database connection, commit, push, or deployment was performed by the Sprint 0.2 documentation audit.

@@ -13,3 +13,5 @@ Define an `AuthenticationProvider` port returning only a trusted global user ID 
 ## Consequences
 
 Authorization can be tested with test-only port fixtures, which are not runtime identities or stored user state. Future auth providers must validate issuer, signature, audience, expiry, and account status before subject mapping; lifecycle/revocation policies and rate limits require review. Any eventual Netlify Identity adapter must retain these ports and use the supported platform SDK, without pushing provider semantics into domain.
+
+The Sprint 0.2 [provider/session proposal](0007-authentication-provider-proposal.md) and [authentication design](../authentication-design.md) supply reviewable policies and SDK compatibility gates. They do not supersede the disabled runtime state, install a provider, settle unresolved audience/transport assumptions, or authorize Sprint 1.

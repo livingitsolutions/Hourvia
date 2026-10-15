@@ -1,6 +1,6 @@
 # Hourvia architecture — Sprint 0
 
-Status: foundation implemented; product behavior and database design remain proposed. This document is not a claim that persistence or authentication is live.
+Status: foundation implemented; baseline schema metadata and an immutable generated migration are present. The platform reports that baseline applied to preview; production database state has not been inspected. Authentication and application persistence remain disabled/disconnected. Hardening and authentication architecture below are proposals, not activated protections. See the [current-state addendum](sprint-0-current-state-addendum.md).
 
 ## Product model
 
@@ -35,7 +35,8 @@ src/
     components/                 shared brand and icon primitives
     pages/                      dashboard and placeholder screens
     App.tsx                     shell, hash navigation, session theme
-db/schema.ts                    proposed Drizzle schema, never imported by browser
+db/schema.ts                    baseline Drizzle metadata, never imported by browser
+netlify/database/migrations/     immutable generated baseline; no Sprint 0.2 changes
 netlify/functions/health.mts     static health handler; no database or auth calls
 tests/                          fixtures, schema metadata and boundary checks
 docs/adr/                       architecture decision records
@@ -111,4 +112,12 @@ Seven hash-addressed screens are navigable with direct links and browser history
 
 Vite builds only browser presentation imports. Netlify bundles `.mts` functions separately. Client code must never import the database factory, Node crypto adapter, or auth credentials. SPA fallback follows the `/api/*` fallback so unknown API endpoints do not return the app shell. Typecheck covers server and browser files; lint and architecture tests guard inward dependencies.
 
-No migration files were generated or executed. No database query/connection, Netlify resource activation, production configuration API call, deployment, commit, or push occurred. The lazy database factory is not used by a function. Configuration files prepare a future build; they do not alter live resources in this run.
+The original implementation-session report described no migration generation/execution or deployment by that session. The repository subsequently contained a generated baseline, the platform reported it applied to preview, and a ready production deployment was observed. Sprint 0.2 performed only source validation and read-only hosting/source-documentation retrieval: no database connection, migration operation, activation, deployment, commit, or push. The lazy factory is still unused by runtime functions. A ready deployment does not supply the inaccessible build's terminal record or logs.
+
+## Proposed security architecture — not implemented
+
+[ADR 0006](adr/0006-forward-only-foundation-hardening.md) and the [forward-only hardening design](forward-only-hardening-design.md) specify deferred owner/personal consistency checks, immutable personal slots, scoped mutation procedures, deferred audit obligations, append-only audit grants/triggers, lock ordering, persistent deduplication, and conditional RLS. Direct runtime table writes are denied in the proposed privilege model; constraints protect data shape and narrow procedures enforce caller/action policy. This model depends on role separation that must be verified on an approved isolated branch.
+
+[ADR 0007](adr/0007-authentication-provider-proposal.md) and the [authentication design](authentication-design.md) propose Netlify Identity behind the existing provider-neutral port, with authoritative online provider validation and application-owned server sessions. Workspace roles remain database membership data. SDK claim fallback and browser-readable auth-cookie defaults are not accepted as the protected-API boundary. The provider, secure session transport, lifecycle, and revocation policies require senior review; no SDK was installed or Identity enabled.
+
+All authenticated writes must recheck user/session and membership under the documented transaction locks, use tenant-qualified resource predicates, and commit mutation, audit, and deduplication together. Reads must combine authorization and tenant/resource scoping in one statement/snapshot. No role token, requested workspace ID, or editable user metadata grants access. [Integration tests](database-integration-test-plan.md) are planned, not run. [Build evidence](build-verification-status.md) and the [risk register](sprint-0-risk-register.md) remain release gates. These designs do not authorize Sprint 1.
