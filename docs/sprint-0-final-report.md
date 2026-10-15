@@ -1,5 +1,7 @@
 # Hourvia — Sprint 0 architectural review
 
+Historical implementation-session report. Its validation and action statements describe that session, not the complete current platform state. The [Sprint 0 current-state addendum](sprint-0-current-state-addendum.md), [Sprint 0.1 evidence summary](sprint-0-1-acceptance-verification.md), and [Sprint 0.2 final report](sprint-0-2-final-report.md) supersede its current-state and acceptance interpretation. The baseline migration now exists and is reported applied to preview; a ready deployment is observed, while the build's own execution remains unverified.
+
 Review date: October 14, 2026. Scope: architecture and foundation only. Implementation stopped at Sprint 0; the next sprint was not started.
 
 ## 1. Environment inspection findings

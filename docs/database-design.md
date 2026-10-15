@@ -1,6 +1,6 @@
-# Proposed PostgreSQL schema
+# PostgreSQL baseline and proposed hardening
 
-`db/schema.ts` is an offline, reviewable Drizzle schema. `drizzle.config.ts` reserves `netlify/database/migrations` for a later approved migration workflow. There are **no generated or applied migrations**, and no code queries these tables. Do not enable database-backed endpoints before reviewing and generating the full migration, including the hardening below.
+`db/schema.ts` describes the baseline Drizzle schema. `netlify/database/migrations/20261014193353_wise_hawkeye` contains generated SQL and its snapshot. The supplied platform state reports that migration already applied to the preview branch; neither preview nor production was queried in Sprint 0.2. Preserve both files exactly. Runtime code still does not query these tables. The baseline does not contain the mandatory hardening below. See the [current-state addendum](sprint-0-current-state-addendum.md), [forward-only design](forward-only-hardening-design.md), and [isolated integration-test plan](database-integration-test-plan.md). No new migration was authored or executed by this design sprint.
 
 ## Ownership and keys
 
@@ -11,7 +11,7 @@ UUIDs identify entities globally; tenant-owned rows carry non-null `workspace_id
 | users | Identity, global | UUID PK; display name; default IANA timezone; UTC creation |
 | external_identities | Identity, global | User FK; unique verified `(issuer, subject)`; never store credentials |
 | workspaces | Tenant root | User owner FK; PERSONAL/BUSINESS enum; lifetime partial unique PERSONAL owner index |
-| memberships | Workspace & Membership, tenant | UUID PK; unique `(workspace, user)` and `(workspace, id)`; one OWNER via partial unique index; owner ACTIVE check |
+| memberships | Workspace & Membership, tenant | UUID PK; unique `(workspace, user)` and `(workspace, id)`; at most one OWNER via partial unique index; owner ACTIVE check; exact matching-owner existence is deferred hardening |
 | clients | Projects & Clients, tenant | UUID PK, unique `(workspace, id)`; archive instead of destructive delete |
 | projects | Projects & Clients, tenant | UUID PK, unique `(workspace, id)`; optional composite client FK prevents cross-tenant link |
 | active_timers | Time Tracking, tenant | PK `(workspace, user)` enforces timer concurrency; composite member/project FKs; idempotency key |
@@ -22,7 +22,7 @@ UUIDs identify entities globally; tenant-owned rows carry non-null `workspace_id
 | timesheet_submissions | Timesheets, tenant | Append-only sheet/version key; submitted user, period, timezone and UTC timestamp snapshot |
 | timesheet_submission_entries | Timesheets, tenant | Composite submission-version and base-entry FKs; full effective entry values retained for each historical submission |
 | approvals | Approvals, tenant | Exactly one composite adjustment/sheet target; sheet target-version FK to submission; actor membership FK; one decision per adjustment and terminal decision per sheet version |
-| audit_events | Audit, tenant | Actor global-user FK; entity reference; request UUID; UTC timestamp; allowlisted JSON metadata |
+| audit_events | Audit, tenant | Actor global-user FK; polymorphic entity reference; request UUID; UTC timestamp; JSON metadata; tenant attribution, allowlisting, and append-only enforcement are proposed, not baseline guarantees |
 
 Reporting owns a future read projection, not duplicate authoritative time tables. Invitations and provider credential/session storage are outside Sprint 0 and not modeled prematurely. Roles remain membership data, never token claims.
 
@@ -62,7 +62,7 @@ Cross-cutting: every mutation scopes rows by tenant; reads authorization members
 
 ## Mandatory hardening before persistence release
 
-The following are **not enforced by the current schema or a running database**:
+The following are **not enforced by the baseline source schema/migration**. Live database state and effective privileges are unverified; this is not a claim about every rule that might exist outside the repository:
 
 1. Deferred constraint triggers requiring exactly one owner membership matching `workspaces.owner_id`, and personal owner-only membership. The current indexes enforce *at most* one owner, not existence/cross-row identity equality.
 2. Append-only database privileges/triggers for finalized entries, adjustments, decisions, and audit. TypeScript readonly is not database immutability. Safe retention/redaction needs a separately authorized policy.
@@ -75,4 +75,4 @@ The following are **not enforced by the current schema or a running database**:
 9. Persistent idempotency response records for operations other than timer stop/start. The current timer/entry keys do not solve every retry workflow.
 10. Integration tests against an explicitly approved isolated database branch for constraints, races, lock order, and revocation. Current tests inspect schema metadata only.
 
-No raw DDL or migration execution was used in this sprint. Migration generation/application requires a later explicit approval; deployment of this scaffold must not be mistaken for activation of any database workflow.
+The original report's no-migration statements described the implementation session; the current repository and preview application report are reconciled above. Sprint 0.2 executed no DDL, generated no migration, and made no database connection. Any approved implementation must use new forward-only migration files, retain the applied baseline byte-for-byte, and prove role, trigger, transaction, and pooling assumptions on an isolated branch before persistence release. Deployment of the scaffold must not be mistaken for activation of database workflows.
